@@ -50,6 +50,8 @@ class myThread(threading.Thread):
             objExt = temp[1]
         except IndexError:
             pass
+        if(objExt == "exe"):
+            packet = b'HTTP/1.0 200 OK\r\nContent-Length: %b\r\nContent-Type: application/octet-stream\r\ncharset=UTF-8\r\n\r\n%b' % (objectLength,objectBuffer)
         if(objExt == "jpg"):
             packet = b'HTTP/0.9 200 OK\r\nContent-Length: %b\r\nContent-Type: image/jpg\r\ncharset=UTF-8\r\n\r\n%b' % (objectLength,objectBuffer)
         else:
